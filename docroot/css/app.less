@@ -1,0 +1,506 @@
+@import "font-kendoui/font.css";
+@import "font-roboto/stylesheet.css";
+
+// @darkBg1: #4e535c;
+// @darkBg2: #363940;
+
+@darkBg1: #363940;
+@darkBg2: #161a1c;
+
+@selBg1: #29d6c5;
+@selBg2: #10c4b2;
+
+@linkColor: #199e91;
+
+@checkboxHoverColor: lighten(desaturate(@selBg1, 30%), 40%);
+
+@import "icon-styles.less";
+@import "scrollbars.less";
+
+.pf1(@prop, @value) {
+  x: ~`"y; " +
+       (" -webkit-@{prop}: @{value};" +
+        " -moz-@{prop}: @{value};" +
+        " -o-@{prop}: @{value};" +
+        " -ms-@{prop}: @{value};" +
+        " @{prop}: @{value}").replace(/\'\$\s*|\s*\$\'/g, "")`;
+}
+
+.pf2(@prop, @value) {
+  x: ~`"y; " +
+       (" @{prop}: -webkit-@{value};" +
+        " @{prop}: -moz-@{value};" +
+        " @{prop}: -o-@{value};" +
+        " @{prop}: -ms-@{value};" +
+        " @{prop}: @{value}").replace(/\'\$\s*|\s*\$\'/g, "")`;
+}
+
+.border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font: normal 13px RobotoRegular,arial,sans-serif;
+  background-color: #bbb;
+}
+
+h1, h2, h3, h4 {
+  font-family: RobotoLight,arial,sans-serif;
+  font-weight: normal;
+}
+
+h1 { font-size: 26px }
+
+.project-toolbar {
+  overflow: visible !important;
+  z-index: 100;
+  border-bottom: 1px solid #000;
+  h1 {
+    margin: 10px;
+  }
+  .project-toolbar-buttons {
+    float: right;
+    margin: 10px;
+  }
+}
+
+.project-toolbar, .console-toolbar, .docbrowser-toolbar {
+  background-color: @darkBg1;
+  color: #f0f0f1;
+}
+
+h3 {
+  color: #444;
+}
+
+a, a:link, a:visited {
+  color: @linkColor;
+  text-decoration: none;
+}
+a:hover {
+  color: @linkColor;
+  text-decoration: underline;
+}
+
+#content {
+  background-color: #fff;
+  .border-box;
+  .warn {
+    color: #c62;
+  }
+  h1 {
+    padding: 3px 20px;
+    text-transform: uppercase;
+    font-size: 19px;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    margin-bottom: 10px;
+  }
+  table.project-files {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    td {
+      padding: 2px 20px;
+      vertical-align: top;
+    }
+    .file-line {
+      position: relative;
+      .file-name {
+        white-space: nowrap;
+        input[type="checkbox"] {
+          position: relative;
+          top: 2px;
+        }
+      }
+      .file-operations {
+        padding: 2px;
+        background-color: #fff;
+        z-index: 10;
+        position: absolute;
+        right: 0;
+        top: 0;
+        .file-size {
+          padding-right: 1em;
+        }
+        span[class^="icon-"] {
+          padding: 0 4px;
+          position: relative;
+          top: 1px;
+          font-size: 110%;
+          opacity: 0.2;
+          cursor: pointer;
+        }
+      }
+      &:hover {
+        background: @checkboxHoverColor;
+        .file-operations {
+          background: @checkboxHoverColor;
+          span[class^="icon-"] {
+            opacity: 0.6;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  .preview-url {
+    border-top: 2px solid #888;
+    background-color: #ddd;
+    padding: 1em;
+  }
+}
+
+@leftSideFontColor: #f0f0f1;
+
+.left-side {
+  &>.title {
+    padding: 10px;
+    font: 19px RobotoLight;
+    .links {
+      float: right;
+    }
+  }
+  .k-listview {
+    border: 0;
+  }
+  .k-toolbar {
+    text-align: right;
+  }
+  .k-state-selected {
+    background-color: @selBg1;
+    border-color: @selBg1;
+  }
+  color: @leftSideFontColor;
+  .BI {
+    margin-left: 2px;
+    font-size: 16px;
+    padding: 1px;
+  }
+  .left-side-bg1 {
+    background-color: @darkBg1;
+    color: @leftSideFontColor;
+  }
+  .left-side-bg2 {
+    background-color: @darkBg2;
+    color: @leftSideFontColor;
+  }
+}
+
+.simple-list-item {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+  padding: 2px 5px;
+  &._projects, &._api {
+    padding-left: 1em;
+    .has-icon-before;
+    &:before {
+      margin-right: 5px;
+    }
+  }
+  &._projects:before { content: "\E010" }
+  &._api:before { content: "\E09C" }
+}
+
+table.build-errors {
+  border-spacing: 0;
+  td {
+    padding: 2px 5px;
+  }
+  thead {
+    td {
+      background-color: #ddd;
+      font-weight: bold;
+      border-bottom: 2px solid #444;
+    }
+  }
+  tbody {
+    td {
+      border-bottom: 1px dotted #777;
+    }
+  }
+}
+
+.two-columns {
+  .pf1(column-count, 2);
+  .pf1(column-gap, 20px);
+}
+
+label.hovering {
+  display: block;
+  &:hover {
+    background-color: @checkboxHoverColor;
+  }
+}
+
+.project-deps-dialog {
+  .left-files {
+    overflow:auto;
+    background: #eee;
+    border: none
+  }
+  .title {
+    padding: 5px;
+    text-align: center;
+    background: #eee
+  }
+}
+
+.deps-graph {
+  background-color: #eee;
+  padding-left: 1em; padding-right: 1em;
+  .direct {
+    .filename {
+      font-weight: bold;
+    }
+  }
+}
+
+#console {
+  background-color: #ddd;
+  .message {
+    &.error {
+      color: #c22;
+    }
+    border-bottom: 1px solid #ccc;
+    &.endcall {
+      border-bottom: 2px solid #000;
+    }
+    padding: 2px 5px;
+    .prefix {
+      color: #972;
+    }
+    &:hover {
+      background-color: @checkboxHoverColor;
+    }
+    .filename {
+      cursor: pointer;
+      margin-left: 1em;
+      font-family: monospace;
+      float: right;
+      font-weight: bold;
+      .location {
+        font-weight: normal;
+        color: #555;
+      }
+      &:hover {
+        color: #00f;
+      }
+    }
+  }
+}
+
+.console-toolbar {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 5px;
+}
+
+.input-with-clear-button {
+  position: relative;
+  .clear-button {
+    display: block;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    margin-top: -10px;
+    width: 1em;
+    height: 1em;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 2px;
+    color: @linkColor;
+    opacity: 0.5;
+    border-radius: 15px;
+    &:hover {
+      opacity: 1;
+      background: @checkboxHoverColor;
+    }
+  }
+}
+
+
+
+
+/// custom widgets
+
+.kendo-no-scroll {
+  overflow: hidden !important;
+}
+
+.k-window-content {
+  .kendo-no-scroll;
+}
+
+.kendo-layoutmanager {
+  position: relative;
+  overflow: hidden;
+  & > * {
+    position: absolute;
+    overflow: hidden;
+    .border-box;
+  }
+  .kendo-resizebar {
+    background-color: rgba(11, 22, 33, 0.9);
+    &:hover {
+      background-color: @selBg2;
+    }
+    &.k-dragging {
+      background-color: @selBg1;
+    }
+  }
+  &.vertical {
+    & > .kendo-resizebar {
+      height: 5px;
+      cursor: row-resize;
+    }
+  }
+  &.horizontal {
+    & > .kendo-resizebar {
+      width: 5px;
+      cursor: col-resize;
+    }
+  }
+}
+
+.kendo-multipicker {
+  .item {
+    cursor: default;
+    display: block;
+    padding: 1px 5px;
+    &:hover {
+      background-color: @checkboxHoverColor;
+    }
+    &.selected {
+      background-color: @selBg1;
+    }
+  }
+}
+
+.filepicker-dialog {
+  .filesystem-grid {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+  .status {
+    .current-path {
+      font-family: monospace;
+    }
+  }
+  input.search {
+    font-family: monospace;
+    padding-left: 5px;
+  }
+}
+
+.docbrowser-index {
+  overflow: auto;
+}
+
+.docbrowser-content {
+  overflow: auto;
+  padding-left: 10px;
+}
+
+textarea { resize: none }
+
+.k-button {
+  padding: 0 5px;
+}
+
+div.k-window-content {
+  padding: 0;
+  .dlg-buttons {
+    background-color: @darkBg1;
+    padding: 8px;
+    text-align: right;
+    color: #efefef;
+    button {
+      width: 5em;
+    }
+  }
+  .dlg-content {
+    padding: 5px;
+  }
+}
+
+.confirm-dialog {
+  padding: 10px 20px !important;
+  position: relative;
+  &.with-icon {
+    padding-left: 60px !important;
+    .confirm-dialog-icon {
+      position: absolute;
+      left: 10px;
+      top: 20px;
+      font-size: 40px;
+      color: #ffac51;
+    }
+  }
+  .shortdesc {
+    font: 150% RobotoLight,arial,sans-serif;
+  }
+}
+
+.docbrowser {
+  .docbrowser-toolbar {
+    padding: 5px;
+  }
+  .docbrowser-index {
+    padding-left: 5px;
+    background: #f4f4f4;
+  }
+}
+
+.k-button.k-secondary {
+  background: transparent;
+  color: inherit;
+}
+
+.notification {
+  position: absolute;
+  z-index: 32000;
+  background: white;
+  border: 2px solid #444;
+  border-radius: 5px;
+  padding: 1em;
+  font-size: 130%;
+  top: 20%;
+  width: 30em;
+  left: 50%;
+  margin-left: -15em;
+  box-shadow: 1px 4px 10px #888;
+  background-color: darken(@checkboxHoverColor, 10%);
+  opacity: 0;
+  margin-top: 20px;
+  &.error {
+    background-color: #faa;
+  }
+  &.active {
+    opacity: 1;
+    transition: opacity 0.4s, margin-top 0.1s;
+    margin-top: 0;
+  }
+  &.hiding {
+    opacity: 0;
+    margin-top: -30px;
+    transition: opacity 0.5s, margin-top 1s;
+  }
+}
+
+.k-tooltip {
+  margin-top: 15px;
+}

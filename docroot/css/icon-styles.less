@@ -1,0 +1,74 @@
+.BI {
+  border: none;
+  border-radius: 15px;
+  width: 26px !important;
+  height: 26px;
+  font-size: 20px;
+  padding: 0;
+  text-align: center;
+}
+
+.BIL {
+  font-family: arial;
+  &:before {
+    margin-right: 5px;
+    display: block;
+    float: left;
+    font-size: 120%;
+    margin-top: 1px;
+  }
+}
+
+.has-icon-before {
+  &:before {
+    font-family: "KendoUI";
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    speak: none;
+  }
+  &.bigger-icon {
+    &:before {
+      font-size: 160%;
+      display: block;
+      float: left;
+      margin-right: 5px;
+    }
+  }
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  .has-icon-before;
+}
+
+.icon-new-project:before { content: "\E039" }
+.icon-import-project:before { content: "\E0B2" }
+.icon-preview:before { content: "\E09B" }
+.icon-trash:before { content: "\E0C3" }
+.icon-config:before { content: "\E0C9" }
+.icon-new-window:before { content: "\E0C8" }
+.icon-add-file:before { content: "\E039" }
+.icon-clear-console:before { content: "\E036" }
+.icon-jshint:before { content: "\E06C" }
+.icon-kendo:before { content: "\E107" }
+.icon-dependencies:before { content: "\E0BE" }
+.icon-deps:before { content: "\E073" }
+.icon-compile:before { content: "\E0C1" }
+.icon-picture:before { content: "\E07C" }
+.icon-bundle:before { content: "\E096" }
+.icon-build:before { content: "" }
+//.icon-edit:before { content: "\E07B" }
+.icon-edit:before { content: "\E0D5" }
+.icon-props:before { content: "\E0A5" }
+.icon-back-folder:before { content: "\E0ED" }
+.icon-up-folder:before { content: "\E0A3" }
+.icon-new-folder:before { content: "\E0A0" }
+.icon-folder:before { content: "\E0A1" }
+.icon-warning:before { content: "\E0FA" }
+.icon-question:before { content: "\E0FB" }
+.icon-move-up:before { content: "\E001" }
+.icon-move-down:before { content: "\E002" }
+.icon-clear-filter:before { content: "\E06D" }
